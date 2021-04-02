@@ -213,6 +213,6 @@ var app = new Vue({
                 });
             }
         }
-        axios.defaults.timeout = 1000;
+        axios.defaults.timeout = 5000;
     }
 });
