@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fate/Freedom Order Simulator</title>
+    <script src='https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.min.js'></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/element-ui@2.15.1/lib/theme-chalk/index.css">
+    <script src='https://cdn.jsdelivr.net/npm/element-ui@2.15.1/lib/index.js'></script>
+    <script src='https://cdn.jsdelivr.net/npm/aes-js@3.1.2/index.min.js'></script>
+    <script src='https://cdn.jsdelivr.net/npm/axios@0.21.1/dist/axios.min.js'></script>
+    <script src='https://cdn.jsdelivr.net/npm/lz4@0.6.5/build/lz4.min.js'></script>
+    <script src='https://cdn.jsdelivr.net/npm/csvjson-csv2json@5.0.6/csv2json.min.js'></script>
+    <script src='https://cdn.jsdelivr.net/npm/qcode-decoder@0.1.0/build/qcode-decoder.min.js'></script>
+</head>
+
+<style>
+    #qrcode {
+        width: 300px;
+        height: 50px;
+        background: black;
+        color: white;
+    }
+</style>
+
+<body>
+    <div id="ffo" v-loading.fullscreen.lock='loadedServantDB != 4 || cachedImages.length != 0' element-loading-text='正在加载中...'>
+        <div v-show='loadedServantDB == 4'>
+            <div id='qrcode' @dragover='dragOver' @drop='drop' draggable="true" v-show="!calcedServantData.inited">
+                <h1>将二维码拖拽到此处</h1>
+                <img id='gameQr' src=''>
+            </div>
+            <div>
+                <canvas id='svtResult' width="1024" height="1024">您的浏览器不支持本工具。</canvas>
+            </div>
+        </div>
+    </div>
+    <script src='index.js'></script>
+</body>
+
+</html>
